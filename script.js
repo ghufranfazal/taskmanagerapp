@@ -4,9 +4,13 @@ const themeBtn = document.querySelector(".theme-btn");
 const closeBtn = document.querySelector(".close-btn");
 const updatePage = document.querySelector(".updateTask");
 const updateForm = document.querySelector(".update-form");
+const delAllTaskBtn = document.querySelector(".del-all-task-btn");
+const compltTaskMsg = document.querySelector('.complt-task-msg')
 
 let updateIndex = null;
 let taskArr = [];
+// let completedTask = 0;
+
 
 const taskUi = () => {
   taskCards.innerHTML = "";
@@ -50,6 +54,16 @@ const taskUi = () => {
     taskBtns.append(complete, edit, delBtn);
   });
 };
+const checkDel = () => {
+  if (taskArr.length === 0) {
+    console.log("array is empty");
+    delAllTaskBtn.style.display = "none";
+  } else {
+    console.log("array is not empty");
+    delAllTaskBtn.style.display = "flex";
+  }
+};
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -76,14 +90,20 @@ form.addEventListener("submit", (event) => {
   console.log("Inside form taskArr", taskArr);
   taskUi();
   // console.log(obj);
+  checkDel()
   form.reset();
 });
+// const ctm = () =>{
+//   // completedTask +=1;
+//   console.log(completedTask)
+//   compltTaskMsg.textContent = `Completed Task : ${completedTask}/${taskArr.length}`
+// }
 const completeTask = (id) => {
   let taskIndex = taskArr.findIndex((elem) => elem.id === id);
-  if (taskIndex === -1) {
-    return;
-  }
-
+  // completedTask +=1;
+  // console.log(completedTask)
+  // ctm()
+  
   taskArr[taskIndex].status = "completed";
   taskUi();
 };
@@ -91,7 +111,9 @@ const completeTask = (id) => {
 const deleteCard = (id) => {
   let taskDelIndex = taskArr.findIndex((elem) => elem.id === id);
   taskArr.splice(taskDelIndex, 1);
+  // ctm();
   taskUi();
+  checkDel()
 };
 
 const editCard = (id) => {
@@ -126,3 +148,11 @@ updateForm.addEventListener("submit", (event) => {
 closeBtn.addEventListener("click", () => {
   updatePage.style.display = "none";
 });
+
+delAllTaskBtn.addEventListener("click", () => {
+  taskArr = [];
+  taskUi();
+  checkDel();
+});
+
+

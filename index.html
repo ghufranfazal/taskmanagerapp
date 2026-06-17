@@ -13,19 +13,27 @@
         <h1 class="logo">Task Manager App</h1>
         <!-- <p data-theme="light" class="theme-btn">Light</p> -->
       </div>
-      <div class="form">
-        <form>
-          <input type="text" placeholder="Enter Task" />
-          <select name="" id="" value="select">
-            <option>Work</option>
-            <option>Study</option>
-            <option>Health</option>
-            <option>Hobby</option>
-            <option>Money</option>
-          </select>
-          <button>Add</button>
-        </form>
+      <div class="form-parent">
+        <div class="form">
+          <form>
+            <input type="text" placeholder="Enter Task" />
+            <select name="" id="" value="select">
+              <option>Work</option>
+              <option>Study</option>
+              <option>Health</option>
+              <option>Hobby</option>
+              <option>Money</option>
+            </select>
+            <button>Add</button>
+          </form>
+        </div>
+        
+        <button class="del-all-task-btn">Delete All Task</button>
+        <!-- <div class="complete-counter">
+          <h1 class="complt-task-msg">Completed Task : 0</h1>
+        </div> -->
       </div>
+    
       <div class="hr"></div>
       <div class="taskCards">
         <!-- <div class="taskCard" data-id="" data-status="" data-category="">

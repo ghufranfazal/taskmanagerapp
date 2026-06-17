@@ -38,6 +38,22 @@ main{
 .logo{
     font-size: 3.5rem;
 }
+.form-parent{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap:10px;
+}
+.del-all-task-btn{
+    font-size: 1.5rem;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 0px 1px black;
+}
+.del-all-task-btn:hover{
+    background-color: #cccccc7c;
+}
 .form{
     display: flex;
     width: 40%;
@@ -82,8 +98,15 @@ form button{
     height: 40px;
     padding: 0px 20px;
     font-size: 1.3rem;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.delAll{
+    display: inline-block;
+}
+.del-all-task-btn{
+    display: none;
 }
 
 .taskCards{
@@ -131,7 +154,7 @@ form button{
     font-size: 1rem;
     padding: 5px 10px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #ccc;
 } 
 
 
