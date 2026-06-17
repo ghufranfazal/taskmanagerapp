@@ -53,7 +53,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   let task = event.target[0].value;
   let taskCat = event.target[1].value;
-
+  
   // ########      DIFFERENCE BETWEEN input.value AND input.getAttribute("value")       ##############
   // input.value : input ki current value ko fetch karta hai.
   // input.getAttribute("value") : input ki wo value fetch karta hai jo HTML ke value attribute me diya ho. ye static hota hai.
@@ -67,11 +67,12 @@ form.addEventListener("submit", (event) => {
     task,
     taskCat,
   };
-
-  // if (updateIndex) 
+  
+  // if (updateIndex)
   taskArr.push(obj);
+  console.log('Inside form taskArr',taskArr)
   taskUi();
-  console.log(obj);
+  // console.log(obj);
   form.reset();
 });
 
@@ -87,22 +88,27 @@ const editCard = (id) => {
   updateForm[0].value = taskUpdate.task;
   updateForm[1].value = taskUpdate.taskCat;
 
-  console.log(updateForm[0].value);
-  console.log(taskUpdate);
-  console.log(taskUpdate.task);
-  console.log("Clicked on Edit");
+  updateForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    updateObj = {
+      id: id,
+      task: updateForm[0].value,
+      taskCat: updateForm[1].value,
+    };
+    taskArr[updateIndex] = updateObj;
+    console.log(updateObj)
+    console.log(taskArr)
+    taskUi();
+    updatePage.style.display = "none";
+    updateForm.reset();
+  });
+  // console.log(updateForm[0].value);
+  console.log('taskUpdate Object:',taskUpdate);
+  console.log("taskArr inside update: ",taskArr)
+  // console.log(taskUpdate.task);
+  // console.log("Clicked on Edit");
 };
 
-updateForm.addEventListener("submit", (event) => {
-event.preventDefault();
-updateObj = {
-    id:"hello",
-    task,
-    taskCat
-  }
-  taskArr[updateIndex] = updateObj
-  updateForm.reset();
-});
 closeBtn.addEventListener("click", () => {
   updatePage.style.display = "none";
 });
