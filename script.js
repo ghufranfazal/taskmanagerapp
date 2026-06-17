@@ -13,9 +13,10 @@ const taskUi = () => {
   taskArr.forEach((elem) => {
     let taskCard = document.createElement("div");
     taskCard.classList.add("taskCard");
-    taskCard.setAttribute("data-id", Date.now());
-    taskCard.setAttribute("data-status", "pending");
+    taskCard.setAttribute("data-id", elem.id);
+    taskCard.setAttribute("data-status", elem.status);
     taskCard.setAttribute("data-category", elem.taskCat);
+    taskCard.style.opacity = elem.status === "completed" ? "0.3" : "1";
 
     let taskCategory = document.createElement("p");
     taskCategory.classList.add("taskCategory");
@@ -31,6 +32,7 @@ const taskUi = () => {
     let complete = document.createElement("button");
     complete.classList.add("complete");
     complete.textContent = "Complete";
+    complete.setAttribute("onclick", `completeTask(${elem.id})`);
 
     let edit = document.createElement("button");
     edit.classList.add("edit");
@@ -66,6 +68,7 @@ form.addEventListener("submit", (event) => {
     id: Math.floor(Math.random() * (10000 - 1 + 1)) + 1,
     task,
     taskCat,
+    status: "pending",
   };
 
   // if (updateIndex)
@@ -75,6 +78,15 @@ form.addEventListener("submit", (event) => {
   // console.log(obj);
   form.reset();
 });
+const completeTask = (id) => {
+  let taskIndex = taskArr.findIndex((elem) => elem.id === id);
+  if (taskIndex === -1) {
+    return;
+  }
+
+  taskArr[taskIndex].status = "completed";
+  taskUi();
+};
 
 const deleteCard = (id) => {
   let taskDelIndex = taskArr.findIndex((elem) => elem.id === id);
