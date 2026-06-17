@@ -53,7 +53,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   let task = event.target[0].value;
   let taskCat = event.target[1].value;
-  
+
   // ########      DIFFERENCE BETWEEN input.value AND input.getAttribute("value")       ##############
   // input.value : input ki current value ko fetch karta hai.
   // input.getAttribute("value") : input ki wo value fetch karta hai jo HTML ke value attribute me diya ho. ye static hota hai.
@@ -67,10 +67,10 @@ form.addEventListener("submit", (event) => {
     task,
     taskCat,
   };
-  
+
   // if (updateIndex)
   taskArr.push(obj);
-  console.log('Inside form taskArr',taskArr)
+  console.log("Inside form taskArr", taskArr);
   taskUi();
   // console.log(obj);
   form.reset();
@@ -81,33 +81,35 @@ const deleteCard = (id) => {
 };
 
 const editCard = (id) => {
-  updatePage.style.display = "flex";
   let taskUpdate = taskArr.find((elem) => elem.id === id);
   updateIndex = taskArr.findIndex((elem) => elem.id === id);
 
+
+  updatePage.style.display = "flex";
   updateForm[0].value = taskUpdate.task;
   updateForm[1].value = taskUpdate.taskCat;
-
-  updateForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    updateObj = {
-      id: id,
-      task: updateForm[0].value,
-      taskCat: updateForm[1].value,
-    };
-    taskArr[updateIndex] = updateObj;
-    console.log(updateObj)
-    console.log(taskArr)
-    taskUi();
-    updatePage.style.display = "none";
-    updateForm.reset();
-  });
-  // console.log(updateForm[0].value);
-  console.log('taskUpdate Object:',taskUpdate);
-  console.log("taskArr inside update: ",taskArr)
-  // console.log(taskUpdate.task);
-  // console.log("Clicked on Edit");
 };
+
+updateForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+
+  let updatedTask = updateForm[0].value.trim();
+  let updatedCat = updateForm[1].value.trim();
+
+  if (updatedTask.trim() === "" || updatedCat === "") {
+    alert("Please fill all the fields");
+    return;
+  }
+
+  taskArr[updateIndex].task = updatedTask;
+  taskArr[updateIndex].taskCat = updatedCat;
+
+  taskUi();
+  updatePage.style.display = "none";
+  updateForm.reset();
+  updateIndex = null;
+});
 
 closeBtn.addEventListener("click", () => {
   updatePage.style.display = "none";
