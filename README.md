@@ -64,7 +64,7 @@ This project is a DOM-focused task manager built with plain HTML, CSS, and JavaS
 
   
 
-1. Open `index.html` in a browser.
+1. Open [Task Manager App](https://ghufranfazal.github.io/taskmanagerapp/) in a browser.
 
 2. Enter a task description in the input field.
 
