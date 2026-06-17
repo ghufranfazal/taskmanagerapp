@@ -77,13 +77,14 @@ form.addEventListener("submit", (event) => {
 });
 
 const deleteCard = (id) => {
-  console.log("ID is : ", id);
+  let taskDelIndex = taskArr.findIndex((elem) => elem.id === id);
+  taskArr.splice(taskDelIndex, 1);
+  taskUi();
 };
 
 const editCard = (id) => {
   let taskUpdate = taskArr.find((elem) => elem.id === id);
   updateIndex = taskArr.findIndex((elem) => elem.id === id);
-
 
   updatePage.style.display = "flex";
   updateForm[0].value = taskUpdate.task;
@@ -92,7 +93,6 @@ const editCard = (id) => {
 
 updateForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
 
   let updatedTask = updateForm[0].value.trim();
   let updatedCat = updateForm[1].value.trim();
