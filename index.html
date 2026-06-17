@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="header">
+        <h1 class="logo">Task Manager App</h1>
+        <p data-theme="light" class="theme-btn">Light</p>
+      </div>
+      <div class="form">
+        <form>
+          <input type="text" placeholder="Enter Task" />
+          <select name="" id="" value="select">
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Home">Home</option>
+          </select>
+          <button>Add</button>
+        </form>
+      </div>
+      <div class="hr"></div>
+      <div class="taskCards">
+        <!-- <div class="taskCard" data-id="" data-status="" data-category="">
+                <p class="taskCategory">category</p>
+                <h1 class="task">Task</h1>
+                <div class="task-btns">
+                    <button class="complete">Complete</button>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div> -->
+      </div>
+    </main>
+    <div class="updateTask">
+      <div class="update-task-top">
+        <h1>Update Task</h1>
+        <a class="close-btn">X</a>
+      </div>
+      <div class="form">
+        <form class="update-form">
+          <input type="text" placeholder="Enter updated task" />
+          <select name="" id="" value="select">
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Home">Home</option>
+          </select>
+          <button>Update</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
