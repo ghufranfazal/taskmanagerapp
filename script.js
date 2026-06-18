@@ -156,3 +156,22 @@ delAllTaskBtn.addEventListener("click", () => {
 });
 
 
+
+
+// THEME TOGGLE
+
+
+const themeBg = document.querySelector('.theme-bg')
+const light = document.querySelector('.light')
+const dark = document.querySelector('.dark')
+
+light.addEventListener('click',()=>{
+    themeBg.style.left = "5px"
+    document.body.classList.remove('dark-theme')
+})
+
+dark.addEventListener('click',()=>{
+    themeBg.style.left = "70px"
+    document.body.classList.add('dark-theme')
+})
+
