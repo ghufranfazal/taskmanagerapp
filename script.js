@@ -160,6 +160,17 @@ delAllTaskBtn.addEventListener("click", () => {
 
 // THEME TOGGLE
 
+window.onload = function(){
+  if(localStorage.getItem('theme')==='dark-theme'){
+    themeBg.style.left = "70px"
+    document.body.classList.add(localStorage.getItem('theme'))
+    
+  }else{
+    // themeBg.style.left = "5px"
+    // document.body.classList.remove(localStorage.getItem('theme'))
+    console.log('helo')
+  }
+}
 
 const themeBg = document.querySelector('.theme-bg')
 const light = document.querySelector('.light')
@@ -167,11 +178,14 @@ const dark = document.querySelector('.dark')
 
 light.addEventListener('click',()=>{
     themeBg.style.left = "5px"
-    document.body.classList.remove('dark-theme')
-})
-
-dark.addEventListener('click',()=>{
+    document.body.classList.remove(localStorage.getItem('theme'))
+    localStorage.removeItem('theme')
+  })
+  
+  dark.addEventListener('click',()=>{
     themeBg.style.left = "70px"
-    document.body.classList.add('dark-theme')
+    localStorage.setItem('theme','dark-theme')
+
+    document.body.classList.add(localStorage.getItem('theme'))
 })
 
